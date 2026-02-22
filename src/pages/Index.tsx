@@ -7,7 +7,30 @@ import mathisProfile from "@/assets/mathis-profile.png";
 import logoEvrgrn from "@/assets/logo-evrgrn.png";
 import cleTrousseau from "@/assets/cle-trousseau.png";
 import vrncaCover from "@/assets/vrnca-cover.png";
-import { Mail, ExternalLink, Music, BookOpen, Mic, Instagram, Youtube } from "lucide-react";
+import coverVrncaPatch from "@/assets/covers/vrnca-patch.jpeg";
+import coverMaelstrom from "@/assets/covers/maelstrom.jpeg";
+import coverEvilBlazy from "@/assets/covers/evil-blazy.jpg";
+import coverVrncaExe from "@/assets/covers/vrnca-exe.jpg";
+import coverTrapTeddy2 from "@/assets/covers/trap-teddy-2.jpg";
+import coverTrapTeddy from "@/assets/covers/trap-teddy.jpg";
+import coverTeddyBlaze from "@/assets/covers/teddyblaze.jpg";
+import coverLetters from "@/assets/covers/letters.jpg";
+import coverMagnum2 from "@/assets/covers/magnum-2.jpg";
+import coverMagnum1 from "@/assets/covers/magnum-1.jpg";
+import { Mail, ExternalLink, Music, BookOpen, Mic, Instagram, Youtube, Disc3 } from "lucide-react";
+
+const discography = [
+  { title: "VRNCA Patch 1.2.exe", year: "2024", tracks: "18 titres", cover: coverVrncaPatch, link: "https://evrgrn.mathisoneblaze.com/album/vrnca-patch-1-2-exe" },
+  { title: "Maëlstrom", year: "2024", tracks: "À venir", cover: coverMaelstrom, link: "https://evrgrn.mathisoneblaze.com/album/4", collab: "avec LeTrom Beats" },
+  { title: "Evil Blazy Vilain Teddy", year: "2022", tracks: "10 titres", cover: coverEvilBlazy, link: "https://evrgrn.mathisoneblaze.com/album/evil-blazy-vilain-teddy", collab: "avec Sedjro Wesker & Usle Belmondo" },
+  { title: "VRNCA.exe", year: "2022", tracks: "8 titres", cover: coverVrncaExe, link: "https://evrgrn.mathisoneblaze.com/album/vrnca-exe", collab: "avec Sedjro Wesker" },
+  { title: "Trap Teddy 2", year: "2021", tracks: "10 titres", cover: coverTrapTeddy2, link: "https://evrgrn.mathisoneblaze.com/album/trap-teddy-2" },
+  { title: "Trap Teddy", year: "2020", tracks: "10 titres", cover: coverTrapTeddy, link: "https://evrgrn.mathisoneblaze.com/album/trap-teddy" },
+  { title: "#TeddyBlaze", year: "2018", tracks: "24 titres", cover: coverTeddyBlaze, link: "https://evrgrn.mathisoneblaze.com/album/teddyblaze" },
+  { title: "Letters on Fallen Fall Leaves", year: "2016", tracks: "11 titres", cover: coverLetters, link: "https://evrgrn.mathisoneblaze.com/album/letters-on-fallen-fall-leaves" },
+  { title: "Magnum 2 (Œuvre au Blanc)", year: "2016", tracks: "15 titres", cover: coverMagnum2, link: "https://evrgrn.mathisoneblaze.com/album/magnum-2" },
+  { title: "MAGNUM (Œuvre au Noir)", year: "2015", tracks: "15 titres", cover: coverMagnum1, link: "https://evrgrn.mathisoneblaze.com/album/magnum-oeuvre-au-noir" },
+];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -215,54 +238,106 @@ const Index = () => {
         </div>
       </section>
 
-      {/* MUSIQUE / VRNCA */}
+      {/* MUSIQUE / DISCOGRAPHIE */}
       <section id="musique" className="py-32 px-6">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <img
-              src={vrncaCover}
-              alt="VRNCA - Projet musical"
-              className="w-full max-w-md mx-auto rounded-xl shadow-2xl shadow-primary/10"
-            />
-          </motion.div>
+        <div className="max-w-7xl mx-auto">
+          {/* Featured release */}
+          <div className="grid md:grid-cols-2 gap-16 items-center mb-24">
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <img
+                src={coverVrncaPatch}
+                alt="VRNCA Patch 1.2.exe"
+                className="w-full max-w-md mx-auto rounded-xl shadow-2xl shadow-primary/10"
+              />
+            </motion.div>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={stagger}
+            >
+              <motion.span variants={fadeUp} className="text-primary text-sm tracking-[0.3em] uppercase font-body">
+                Dernière sortie
+              </motion.span>
+              <motion.h2 variants={fadeUp} className="font-display font-bold text-4xl md:text-5xl mt-4 mb-2">
+                VRNCA Patch 1.2.exe
+              </motion.h2>
+              <motion.p variants={fadeUp} className="text-muted-foreground font-body mb-1">2024 · 18 titres · 42 min 31 s</motion.p>
+              <motion.p variants={fadeUp} className="text-muted-foreground font-body leading-relaxed mb-8 mt-4">
+                Le dernier projet musical de Mathis OneBlaze, disponible sur toutes les plateformes de streaming.
+                Un univers sonore unique mêlant rap, musique électronique et influences caribéennes.
+              </motion.p>
+              <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
+                <a
+                  href="https://evrgrn.mathisoneblaze.com/album/vrnca-patch-1-2-exe"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-primary text-primary-foreground px-6 py-3 rounded-md font-semibold text-sm hover:bg-primary/90 transition-colors inline-flex items-center gap-2"
+                >
+                  <Mic className="w-4 h-4" /> Écouter
+                </a>
+                <a
+                  href="https://evrgrn.mathisoneblaze.com/musique"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="border border-border px-6 py-3 rounded-md text-sm hover:border-primary/40 transition-colors inline-flex items-center gap-2"
+                >
+                  Catalogue complet <ExternalLink className="w-4 h-4" />
+                </a>
+              </motion.div>
+            </motion.div>
+          </div>
+
+          {/* Full discography grid */}
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={stagger}
+            className="text-center mb-12"
           >
             <motion.span variants={fadeUp} className="text-primary text-sm tracking-[0.3em] uppercase font-body">
-              Dernière sortie
+              Discographie
             </motion.span>
-            <motion.h2 variants={fadeUp} className="font-display font-bold text-4xl md:text-5xl mt-4 mb-6">
-              VRNCA
+            <motion.h2 variants={fadeUp} className="font-display font-bold text-3xl md:text-4xl mt-4 flex items-center justify-center gap-3">
+              <Disc3 className="w-8 h-8 text-primary" /> Catalogue Musical
             </motion.h2>
-            <motion.p variants={fadeUp} className="text-muted-foreground font-body leading-relaxed mb-8">
-              Découvrez le dernier projet musical de Mathis OneBlaze, disponible sur toutes les plateformes de streaming.
-              Un univers sonore unique mêlant rap, musique électronique et influences caribéennes.
-            </motion.p>
-            <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
-              <a
-                href="#"
-                className="bg-primary text-primary-foreground px-6 py-3 rounded-md font-semibold text-sm hover:bg-primary/90 transition-colors inline-flex items-center gap-2"
-              >
-                <Mic className="w-4 h-4" /> Écouter
-              </a>
-              <a
-                href="https://evrgrn.mathisoneblaze.com/musique"
+          </motion.div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
+            {discography.map((album, i) => (
+              <motion.a
+                key={album.title}
+                href={album.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="border border-border px-6 py-3 rounded-md text-sm hover:border-primary/40 transition-colors inline-flex items-center gap-2"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05 }}
+                className="group"
               >
-                Toute la discographie <ExternalLink className="w-4 h-4" />
-              </a>
-            </motion.div>
-          </motion.div>
+                <div className="relative overflow-hidden rounded-lg mb-3 aspect-square">
+                  <img
+                    src={album.cover}
+                    alt={album.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-background/0 group-hover:bg-background/30 transition-colors flex items-center justify-center">
+                    <ExternalLink className="w-6 h-6 text-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
+                </div>
+                <h4 className="font-body text-sm font-medium leading-tight group-hover:text-primary transition-colors">{album.title}</h4>
+                <p className="text-xs text-muted-foreground font-body mt-1">{album.year} · {album.tracks}</p>
+                {album.collab && <p className="text-xs text-primary/60 font-body mt-0.5">{album.collab}</p>}
+              </motion.a>
+            ))}
+          </div>
         </div>
       </section>
 
